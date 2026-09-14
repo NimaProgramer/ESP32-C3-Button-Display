@@ -18,13 +18,13 @@ Adafruit_ST7789 tft = Adafruit_ST7789(TFT_CS, TFT_DC, TFT_RST);
 
 // Color array
 uint16_t colors[] = {
-  ST7789_RED,
-  ST7789_GREEN,
-  ST7789_BLUE,
-  ST7789_YELLOW,
-  ST7789_CYAN,
-  ST7789_MAGENTA,
-  ST7789_WHITE
+  ST77XX_RED,
+  ST77XX_GREEN,
+  ST77XX_BLUE,
+  ST77XX_YELLOW,
+  ST77XX_CYAN,
+  ST77XX_MAGENTA,
+  ST77XX_WHITE
 };
 int colorIndex = 0;
 int colorCount = sizeof(colors) / sizeof(colors[0]);
@@ -33,6 +33,9 @@ int colorCount = sizeof(colors) / sizeof(colors[0]);
 int lastButtonState = HIGH;
 unsigned long lastDebounceTime = 0;
 unsigned long debounceDelay = 50;
+
+// Forward declaration
+void updateDisplay();
 
 void setup() {
   Serial.begin(115200);
@@ -46,7 +49,7 @@ void setup() {
   // Display setup
   tft.init(240, 240);
   tft.setRotation(0);
-  tft.fillScreen(ST7789_BLACK);
+  tft.fillScreen(ST77XX_BLACK);
   
   Serial.println("Setup complete!");
   
